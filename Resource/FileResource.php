@@ -72,4 +72,19 @@ class FileResource implements SelfCheckingResourceInterface, \Serializable
     {
         $this->resource = unserialize($serialized);
     }
+    
+    /**
+     * PHP 8.1 new update of deprecated unserialize method for \Serializable
+     */
+    public function __serialize()
+    {
+        return serialize($this->resource);
+    }
+    /**
+     * PHP 8.1 new update of deprecated unserialize method for \Serializable
+     */
+    public function __unserialize($serialized)
+    {
+        $this->resource = unserialize($serialized);
+    }
 }
